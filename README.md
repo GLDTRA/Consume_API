@@ -1,6 +1,6 @@
-<h1> Projeto com flask API e sqlite </h1>
+<h1> 🐍 Projeto com flask API e sqlite 🐍 </h1>
 
-<h2> -  Precisará de python instalado na sua máquina , junto com: </h2>
+<h2> -  Precisará de python instalado na sua máquina , junto com mysql e tais libs: </h2>
 
 - instalando o flask : 
 
