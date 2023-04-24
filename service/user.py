@@ -38,7 +38,7 @@ class User(Resource):
         if user_encontrado:
             user_encontrado.update_user(**dados)
             try:
-                UserModel.save_user()
+                UserModel.save_user(user_encontrado)
             except:
                 return {"message": "An internal error ocorred trying to save user"}, 500
             return user_encontrado.json(), 200
