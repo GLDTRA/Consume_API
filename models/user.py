@@ -5,8 +5,8 @@ class UserModel(banco.Model):
     __tablename__ = "user"
 
     id = banco.Column(banco.Integer, primary_key=True)
-    nome = banco.Column(banco.String(50))
-    email = banco.Column(banco.String(70))
+    nome = banco.Column(banco.String(50), nullable=False)
+    email = banco.Column(banco.String(70), unique=True)
 
     def __init__(self, id, nome, email) -> None:
         self.id = id
@@ -19,6 +19,12 @@ class UserModel(banco.Model):
     @classmethod
     def find_user(cls, id):
         user = cls.query.filter_by(id=id).first()
+        if user:
+            return user
+        return None
+
+    def find_user_by_email(cls, email):
+        user = cls.query.filter_by(email=email).first()
         if user:
             return user
         return None
