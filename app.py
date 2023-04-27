@@ -1,7 +1,7 @@
 from flask import Flask
-from flask_restful import Api, Resource
+from flask_restful import Api
 from service.user import Users, User
-from service.login import Login
+from service.login import Login, LoginRegister, UserLogin
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banco.db"
@@ -18,6 +18,9 @@ def cria_banco():
 api.add_resource(Users, "/users")
 api.add_resource(User, "/user/<int:id>")
 api.add_resource(Login, "/login/<int:id>")
+api.add_resource(LoginRegister, "/cadastro")
+api.add_resource(UserLogin, "/login")
+
 if __name__ == "__main__":
     from sql_alchemy import banco
 
