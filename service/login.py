@@ -36,25 +36,10 @@ class Login(Resource):
 
 class LoginRegister(Resource):
     def post(self):
-        dados = atributos.parse_args()
+        dados: LoginModel = atributos.parse_args()
+        dados.senha = gerar_hash(dados.senha)
         if LoginModel.find_login(dados["email"]):
             return {"message": "The email {} already exists".format(dados["email"])}
         user = LoginModel(**dados)
         user.save_login()
-        return {"message": "User create sucessfully"}, 201
-
-
-class UserLogin(Resource):
-    @classmethod
-    def post(cls):
-        dados: LoginModel = atributos.parse_args()
-
-        user: LoginModel = LoginModel.find_login(dados["email"])
-
-        user.senha = gerar_hash(user.senha)
-
-        print(user.senha)
-
-        token = criar_acess_token({"sub": user.id})
-
-        return {"usuario": user.json(), "acess_token": token}
+        return {"message": "User create sucessfully", "user created": dados}, 201
