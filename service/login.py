@@ -43,3 +43,17 @@ class LoginRegister(Resource):
         user = LoginModel(**dados)
         user.save_login()
         return {"message": "User create sucessfully", "user created": dados}, 201
+
+
+class UserLogin(Resource):
+    @classmethod
+    def post(cls):
+        dados: LoginModel = atributos.parse_args()
+
+        user: LoginModel = LoginModel.find_login(dados["email"])
+
+        dados.senha = gerar_hash(user.senha)
+
+        token = criar_acess_token({"sub": user.id})
+
+        return {"usuario": user.json(), "acess_token": token}
