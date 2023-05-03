@@ -1,15 +1,15 @@
-<h1> 🐍 Projeto com flask API e sqlite 🐍 </h1>
+<h1> 🐍 Proyecto con API de matraz y sqlite 🐍 </h1>
 
-<h2> -  Precisará de python instalado na sua máquina , junto com sqlite e tais libs: </h2>
+<h2> - Necesitará Python instalado en su máquina, junto con sqlite y bibliotecas similares: </h2>
 
-- instalando o flask : 
+- instalación del matraz:
 
-<b> pip install flask </b>
+<b> matraz de instalación de pip </b>
 
-- instalando o Alchemysql: 
+- instalando Alchemysql:
 
-<b> pip install SQLAlchemy </b>
+<b> pip instalar SQLAlchemy </b>
 
-- instalando o Flask-SQLAlchemy: 
+- instalando Flask-SQLAlchemy:
 
-<b> pip install Flask-SQLAlchemy </b>
+<b> pip instalar Flask-SQLAlchemy </b>
