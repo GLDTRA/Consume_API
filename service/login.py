@@ -1,7 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.login import LoginModel
-from providers.hash import verificar_hash, gerar_hash
-from providers.token import criar_acess_token, verificar_acess_token
+from providers.hash import gerar_hash
 
 
 atributos = reqparse.RequestParser()
@@ -54,6 +53,4 @@ class UserLogin(Resource):
 
         dados.senha = gerar_hash(user.senha)
 
-        token = criar_acess_token({"sub": user.id})
-
-        return {"usuario": user.json(), "acess_token": token}
+        return {"usuario": user.json()}
