@@ -8,10 +8,12 @@
 
 - instalando Alchemysql:
 
-<b> pip instalar SQLAlchemy </b>
+<b> pip instalar SQLAlchemy  </b>
 
 - instalando Flask-SQLAlchemy:
 
 <b> pip instalar Flask-SQLAlchemy </b>
   
-  Arquitetura: <b> Model View Controller </b>
+- Arquitetura: 
+  
+  <b> Model View Controller </b>
