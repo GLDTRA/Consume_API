@@ -23,7 +23,6 @@ class User(Resource):
     def post(self, id):
         if UserModel.find_user(id):
             return {"message": "User id '{}' already exist".format(id)}, 400
-
         dados = User.argumentos.parse_args()
         user = UserModel(id, **dados)
         try:
@@ -34,11 +33,11 @@ class User(Resource):
 
     def put(self, id):
         dados = User.argumentos.parse_args()
-        user_encontrado = UserModel.find_user(id)
+        user_encontrado: UserModel = UserModel.find_user(id)
         if user_encontrado:
             user_encontrado.update_user(**dados)
             try:
-                UserModel.save_user(user_encontrado)
+                user_encontrado.save_user(user_encontrado)
             except:
                 return {"message": "An internal error ocorred trying to save user"}, 500
             return user_encontrado.json(), 200

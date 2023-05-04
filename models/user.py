@@ -1,14 +1,12 @@
-from flask_sqlalchemy import SQLAlchemy
-
-database = SQLAlchemy()
+from sql_alchemy import banco
 
 
-class UserModel(database.Model):
+class UserModel(banco.Model):
     __tablename__ = "user"
 
-    id = database.Column(database.Integer, primary_key=True)
-    nome = database.Column(database.String(50))
-    email = database.Column(database.String(70))
+    id = banco.Column(banco.Integer, primary_key=True)
+    nome = banco.Column(banco.String(50), nullable=False)
+    email = banco.Column(banco.String(70), unique=True)
 
     def __init__(self, id, nome, email) -> None:
         self.id = id
@@ -25,14 +23,20 @@ class UserModel(database.Model):
             return user
         return None
 
+    def find_user_by_email(cls, email):
+        user = cls.query.filter_by(email=email).first()
+        if user:
+            return user
+        return None
+
     def save_user(self):
-        database.session.add(self)
-        database.session.commit()
+        banco.session.add(self)
+        banco.session.commit()
 
     def update_user(self, nome, email):
         self.nome = nome
         self.email = email
 
     def delete_user(self):
-        database.session.delete(self)
-        database.session.commit()
+        banco.session.delete(self)
+        banco.session.commit()
