@@ -17,3 +17,8 @@
 - Arquitetura: 
   
   <b> Model View Controller </b>
+  
+<center>
+  <p> diagrama de clase </p>
+<center>
+<img width="482" alt="diagrama de classe" src="https://user-images.githubusercontent.com/74261013/236088691-c6550869-6ecf-4d3d-a1b4-963a04b6ae02.png">
